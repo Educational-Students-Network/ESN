@@ -13,6 +13,10 @@ import NotFound from "../errors/NotFound";
 import ServerError from "../errors/ServerError";
 import App from "../layout/App";
 import RequireAuth from "./RequireAuth";
+import HomePage from "../../features/home/HomePage";
+import PasswordRecovery from "../../features/account/PasswordRecovery";
+import EmailConfimation from "../../features/account/EmailConfirmation";
+import Profile from "../../features/account/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +32,7 @@ export const router = createBrowserRouter([
             {element: <RequireAuth roles={['Admin']} />, children: [
                 {path: 'inventory', element: <Inventory />},
             ]},
+            {path:'', element: <HomePage />},
             {path: 'catalog', element: <Catalog />},
             {path: 'catalog/:id', element: <ProductDetails />},
             {path: 'about', element: <AboutPage />},
@@ -37,6 +42,9 @@ export const router = createBrowserRouter([
             {path: 'basket', element: <BasketPage />},
             {path: 'login', element: <Login />},
             {path: 'register', element: <Register />},
+            {path:'passwordRecovery', element: <PasswordRecovery />},
+            {path: 'emailConfirmation', element: <EmailConfimation />},
+            {path: 'profile', element: <Profile />},
             {path: '*', element: <Navigate replace to='/not-found' />}
         ]
     }

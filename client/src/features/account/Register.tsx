@@ -1,107 +1,115 @@
-import { LockOutlined } from '@mui/icons-material';
-import { LoadingButton } from '@mui/lab';
-import { Avatar, Box, Container, Grid, Paper, TextField, Typography } from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import agent from '../../app/api/agent';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import "../../styles/style.css";
+import lock_icon from "../../img/svg/lock_icon.svg";
+import user_icon from "../../img/svg/user_icon.svg";
+import agent from "../../app/api/agent";
+import mail_icon from "../../img/svg/mail_icon.svg";
 
 export default function Register() {
-    const navigate = useNavigate();
-    const { register, handleSubmit, setError, formState: { isSubmitting, errors, isValid } } = useForm({
-        mode: 'onTouched'
-    });
+  const [errorRegister, setErrorRegister] = useState(false);
+  const [confPass, setConfPass] = useState("");
+  const [handlePass, setHandlePass] = useState(false);
+  // when writing css code make loading component and assing it to button
 
-    function handleApiErrors(errors: any) {
-        console.log(errors);
-        if (errors) {
-            errors.forEach((error: string, index: number) => {
-                if (error.includes('Password')) {
-                    setError('password', { message: error })
-                } else if (error.includes('Email')) {
-                    setError('email', { message: error })
-                } else if (error.includes('Username')) {
-                    setError('username', { message: error })
-                }
-            });
-        }
-    }
+  const {
+    register,
+    getValues,
+    handleSubmit,
+    formState: { isSubmitting, errors, isValid },
+  } = useForm({
+    mode: "onTouched",
+  });
 
-    return (
-        <Container component={Paper} maxWidth='sm' sx={{ p: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                <LockOutlined />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-                Register
-            </Typography>
-            <Box component="form"
-                onSubmit={handleSubmit(data => agent.Account.register(data)
-                    .then(() => {
-                        toast.success('Registration successful - you can now login');
-                        navigate('/login');
-                    })
-                    .catch(error => handleApiErrors(error)))}
-                noValidate sx={{ mt: 1 }}
-            >
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    label="Username"
-                    autoFocus
-                    {...register('username', { required: 'Username is required' })}
-                    error={!!errors.username}
-                    helperText={errors?.username?.message as string}
-                />
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    label="Email"
-                    {...register('email', { 
-                        required: 'Email is required',
-                        pattern: {
-                            value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-                            message: 'Not a valid email address'
-                        }
-                    })}
-                    error={!!errors.email}
-                    helperText={errors?.email?.message as string}
-                />
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    label="Password"
+  return (
+    <div className="background-style">
+      <div className="login pillow">
+        <h1>Register</h1>
+        <p>
+          or <a href="/login">login</a>
+        </p>
+        <form
+          onSubmit={handleSubmit((data) => {
+            agent.Account.register(data);
+          })}
+        >
+          <div>
+            <div>
+              <div className="forms">
+                <p>Email address</p>
+                <div className="input">
+                  <img
+                    className="mail-icon"
+                    src={mail_icon}
+                    alt="user_icon"
+                  ></img>
+                  <input
+                    type="email"
+                    id="email"
+                    {...register("email", { required: true })}
+                    placeholder="Type your email"
+                  />
+                </div>
+              </div>
+              <div className="forms">
+                <p>Username</p>
+                <div className="input">
+                  <img src={user_icon} alt="user_icon"></img>
+                  <input
+                    type="text"
+                    id="userName"
+                    {...register("userName", { required: true })}
+                    placeholder="Type your username"
+                  />
+                </div>
+              </div>
+              <div className="forms">
+                <p>Password</p>
+                <div className="input">
+                  <img src={lock_icon} alt="lock_icon"></img>
+                  <input
                     type="password"
-                    {...register('password', { 
-                        required: 'password is required',
-                        pattern: {
-                            value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
-                            message: 'Password does not meet complexity requirements'
-                        }
+                    id="password"
+                    {...register("password", {
+                      required: true,
+                      onChange: () => {
+                        const value = getValues("password");
+                        value === confPass
+                          ? setHandlePass(true)
+                          : setHandlePass(false);
+                      },
                     })}
-                    error={!!errors.password}
-                    helperText={errors?.password?.message as string}
-                />
-                <LoadingButton
-                    disabled={!isValid}
-                    loading={isSubmitting}
-                    type="submit"
-                    fullWidth
-                    variant="contained" sx={{ mt: 3, mb: 2 }}
-                >
-                    Register
-                </LoadingButton>
-                <Grid container>
-                    <Grid item>
-                        <Link to='/login' style={{ textDecoration: 'none' }}>
-                            {"Already have an account? Sign In"}
-                        </Link>
-                    </Grid>
-                </Grid>
-            </Box>
-        </Container>
-    );
+                    placeholder="Type your password"
+                  />
+                </div>
+              </div>
+              <div className="forms">
+                <p>Password</p>
+                <div className="input">
+                  <img src={lock_icon} alt="lock_icon"></img>
+                  <input
+                    type="password"
+                    id="password-conf"
+                    required
+                    value={confPass}
+                    placeholder="Confirm password"
+                    onChange={(e) => setConfPass(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+            {errorRegister ? (
+              <div className="error">Invalid email or password</div>
+            ) : null}
+          </div>
+          <div>
+            <button disabled={!isValid} type="submit">
+              Create Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
+
