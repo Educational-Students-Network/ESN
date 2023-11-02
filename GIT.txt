@@ -1,0 +1,12 @@
+Для того щоб запушити потрібно -> 
+
+git checkout -b new-branch-name
+
+зробити те що хотів
+
+git add .
+git commit -m "Your commit message"
+
+git push origin new-branch-name
+
+потім зайти на Гітхаб в пул реквести, переключитись на свою бранчу, зробити пул реквест, і якщо все добре то замерджити з мейном
