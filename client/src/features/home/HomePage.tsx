@@ -1,33 +1,80 @@
-import { Box, Typography } from "@mui/material";
-import Slider from 'react-slick';
+import "../../styles/style.css";
+import redElips from "../../img/svg/red-elips.svg";
+import blueElips from "../../img/svg/blue-elips.svg";
+import greenElips from "../../img/svg/green-elips.svg";
+import line from "../../img/svg/line_home.svg";
+import home_info_1 from "../../img/svg/home-info-1.svg";
+import home_info_2 from "../../img/svg/home-info-2.svg";
+import home_info_3 from "../../img/svg/home-info-3.svg";
+import NavBar from "../nav-bar/NavBar";
 
 export default function HomePage() {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    };
+  return (
+    <>
+      <div className="page-class">
+        <NavBar />
+        <section className="home gang">
+          <div className="group">
+            <div>
+              <img src={redElips} alt="red-elips" />{" "}
+              <h1>&nbsp;&nbsp; Educational</h1>
+            </div>
+            <div>
+              <img src={blueElips} alt="blue-elips" />{" "}
+              <h1>&nbsp;&nbsp; Social</h1>
+            </div>
+            <div>
+              <img src={greenElips} alt="green-elips" />{" "}
+              <h1>&nbsp;&nbsp; Network</h1>
+            </div>
+          </div>
+        </section>
+        <section className="home graph">
+          <img src={line} className="line" />
+          <div className="container">
+            <div className="item">Explore</div>
+            <div className="item">Contend</div>
+            <div className="item">Inspire</div>
+            <div className="item">Organize</div>
+          </div>
+        </section>
+        <section className="home info">
+          <div className="group">
+            <div className="row">
+              <img src={home_info_1} alt="home_info_1" />
+              <div>
+                <h2>Different activities</h2>
+                <p>
+                  текст про актівітіс, який має написати БА, тра ля ля тра ля ля
+                  тра ля ля тра ля ля тра ля ля тра ля ля
+                </p>
+              </div>
+            </div>
 
-    return (
-        <>
-            <Slider {...settings}>
-                <div>
-                    <img src="/images/hero1.jpg" alt="hero" style={{ display: 'block', width: '100%', maxHeight: 500 }} />
-                </div>
-                <div>
-                    <img src="/images/hero2.jpg" alt="hero" style={{ display: 'block', width: '100%', maxHeight: 500 }} />
-                </div>
-                <div>
-                    <img src="/images/hero3.jpg" alt="hero" style={{ display: 'block', width: '100%', maxHeight: 500 }} />
-                </div>
-            </Slider>
-            <Box display='flex' justifyContent='center' sx={{ p: 4 }} >
-                <Typography variant='h1'>
-                    Welcome to the store!
-                </Typography>
-            </Box>
-        </>
-    )
+            <div className="row">
+              <div>
+                <h2>Interactive community</h2>
+                <p>
+                  текст про комуніті, який має написати БА, тра ля ля тра ля ля
+                  тра ля ля тра ля ля тра ля ля тра ля ля
+                </p>
+              </div>
+              <img src={home_info_2} alt="home_info_2" />
+            </div>
+
+            <div className="row">
+              <img src={home_info_3} alt="home_info_3" />
+              <div>
+                <h2>Job offers</h2>
+                <p>
+                  текст про роботу, який має написати БА, тра ля ля тра ля ля
+                  тра ля ля тра ля ля тра ля ля тра ля ля
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
 }
