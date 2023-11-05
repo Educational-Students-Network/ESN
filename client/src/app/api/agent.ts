@@ -36,6 +36,7 @@ axios.interceptors.response.use(async response => {
             break;
         case 401:
             toast.error(data.title);
+            //this line
             break;
         case 403: 
             toast.error('You are not allowed to do that!');
@@ -50,13 +51,6 @@ axios.interceptors.response.use(async response => {
     return Promise.reject(error.response);
 })
 
-function createFormData(item: any) {
-    let formData = new FormData();
-    for (const key in item) {
-        formData.append(key, item[key])
-    }
-    return formData;
-}
 
 const requests = {
     get: (url: string, params?: URLSearchParams) => axios.get(url, {params}).then(responseBody),
@@ -71,24 +65,12 @@ const requests = {
     }).then(responseBody)
 }
 
-const Catalog = {
-    list: (params: URLSearchParams) => requests.get('products', params),
-    details: (id: number) => requests.get(`products/${id}`),
-    fetchFilters: () => requests.get('products/filters')
-}
-
 const TestErrors = {
     get400Error: () => requests.get('buggy/bad-request'),
     get401Error: () => requests.get('buggy/unauthorised'),
     get404Error: () => requests.get('buggy/not-found'),
     get500Error: () => requests.get('buggy/server-error'),
     getValidationError: () => requests.get('buggy/validation-error')
-}
-
-const Basket = {
-    get: () => requests.get('basket'),
-    addItem: (productId: number, quantity = 1) => requests.post(`basket?productId=${productId}&quantity=${quantity}`, {}),
-    removeItem: (productId: number, quantity = 1) => requests.delete(`basket?productId=${productId}&quantity=${quantity}`)
 }
 
 const Account = {
@@ -100,30 +82,10 @@ const Account = {
     requests.post("account/passwordRecovery", values),
 }
 
-const Orders = {
-    list: () => requests.get('orders'),
-    fetch: (id: number) => requests.get(`orders/${id}`),
-    create: (values: any) => requests.post('orders', values)
-}
-
-const Payments = {
-    createPaymentIntent: () => requests.post('payments', {})
-}
-
-const Admin = {
-    createProduct: (product: any) => requests.postForm('products', createFormData(product)),
-    updateProduct: (product: any) => requests.putForm('products', createFormData(product)),
-    deleteProduct: (id: number) => requests.delete(`products/${id}`)
-}
 
 const agent = {
-    Catalog,
     TestErrors,
-    Basket,
-    Account,
-    Orders,
-    Payments,
-    Admin
+    Account
 }
 
 export default agent;

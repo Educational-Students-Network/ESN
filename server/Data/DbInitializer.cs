@@ -32,5 +32,33 @@ public static class DbInitializer
             await userManager.AddToRolesAsync(admin, new[] {"Member", "Admin"});
             
         }
+        
+        if (context.Events.Any()) return;
+
+        var events = new List<Event>
+        {
+            new Event
+            {
+                Speakers = "Speaker1, Speaker2",
+                Description = "This is event description blah blah blah.",
+                Time = "22.10.2024",
+                AuthorUsername = "Amogus",
+                Place = "Lviv Polytechnic",
+                PictureUrl = "img/png/event1.png"
+            },
+            new Event
+            {
+                Speakers = "Speaker1, Speaker2",
+                Description = "This is event2 description blah blah blah.",
+                Time = "22.10.2025",
+                AuthorUsername = "testUser",
+                Place = "Lviv Polytechnic",
+                PictureUrl = "img/png/event2.png"
+            }
+        };
+
+        context.Events.AddRange(events);
+
+        context.SaveChanges();
     }
 }

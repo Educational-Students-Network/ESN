@@ -26,9 +26,10 @@ function Login() {
 
   async function submitForm(data: FieldValues) {
     const user = await dispatch(signInUser(data));
-    user.meta.requestStatus === "rejected"
-      ? setErrorLogin(true)
-      : navigate("/");
+    console.log(1)
+    console.log(errors.root?.message)
+      // ? setErrorLogin(true)
+      // : navigate("/");
   }
 
   return (
