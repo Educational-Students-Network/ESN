@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { router } from "../router/Routes";
 import { store } from "../store/configureStore";
+import { Event } from "../models/event";
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500))
 
@@ -81,10 +82,14 @@ const Account = {
     requests.post("account/passwordRecovery", values),
 }
 
+const Events = {
+    allEvents: () => requests.get('events')
+}
 
 const agent = {
     TestErrors,
-    Account
+    Account,
+    Events
 }
 
 export default agent;
