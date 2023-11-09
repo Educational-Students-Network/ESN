@@ -30,7 +30,17 @@ export default function Register() {
         </p>
         <form
           onSubmit={handleSubmit((data) => {
-            agent.Account.register(data);
+            if(handlePass === false){
+              setErrorRegister(true)
+            }
+            else{
+              try{
+                agent.Account.register(data);
+              }
+              catch(e){
+                setErrorRegister(true)
+              }
+            }
           })}
         >
           <div>
@@ -98,7 +108,7 @@ export default function Register() {
                 </div>
               </div>
             </div>
-            {errorRegister ? (
+            {errorRegister || handlePass ? (
               <div className="error">Invalid email or password</div>
             ) : null}
           </div>
