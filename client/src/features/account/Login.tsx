@@ -25,13 +25,13 @@ function Login() {
   });
 
   async function submitForm(data: FieldValues) {
-    const user = await dispatch(signInUser(data));
-    console.log(1)
-    console.log(errors.root?.message)
-      // ? setErrorLogin(true)
-      // : navigate("/");
+    try {
+      await dispatch(signInUser(data));
+      navigate("/events");
+    } catch (e) {
+      setErrorLogin(true);
+    }
   }
-
   return (
     <div className="background-style">
       <div className="login pillow">

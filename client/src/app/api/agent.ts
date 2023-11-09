@@ -36,7 +36,6 @@ axios.interceptors.response.use(async response => {
             break;
         case 401:
             toast.error(data.title);
-            //this line
             break;
         case 403: 
             toast.error('You are not allowed to do that!');
