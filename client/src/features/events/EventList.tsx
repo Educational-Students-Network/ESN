@@ -1,15 +1,16 @@
-
+import {Event} from "../../app/models/event";
+import EventCard from "./EventCard";
 
 interface Props{
     events: Event[];
 }
 
-export default function EventList({events}: Props){
+export default function EventList({events} : Props){
     return(
-        <>
-            {events.map(event => {
-                <p></p>
-            })}
-        </>
+        <div className="">
+            {events.map(item => (
+                <EventCard event={item}/>
+            ))}
+        </div>
     )
 }
