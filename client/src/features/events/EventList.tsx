@@ -8,8 +8,8 @@ interface Props{
 export default function EventList({events} : Props){
     return(
         <div className="">
-            {events.map(item => (
-                <EventCard event={item}/>
+            {events.map((item, index) => (
+                <EventCard key={index} event={item}/>
             ))}
         </div>
     )
