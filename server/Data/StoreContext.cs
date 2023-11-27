@@ -17,6 +17,9 @@ public class StoreContext : IdentityDbContext<User>
 
     public DbSet<User> Users { get; set; }
 
+    public DbSet<Comment> Comment { get; set; }
+    
+    public DbSet<Like> Like { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -27,5 +30,28 @@ public class StoreContext : IdentityDbContext<User>
                 new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
                 new IdentityRole { Name = "Mentor", NormalizedName = "MENTOR" }
             );
+        builder.Entity<User>()
+            .HasMany(u => u.Comments)
+            .WithOne(c => c.User)
+            .HasForeignKey(c => c.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<User>()
+            .HasMany(u => u.Likes)
+            .WithOne(l => l.User)
+            .HasForeignKey(l => l.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<Event>()
+            .HasMany(e => e.Comments)
+            .WithOne(c => c.Event)
+            .HasForeignKey(c => c.EventId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<Event>()
+            .HasMany(e => e.Likes)
+            .WithOne(l => l.Event)
+            .HasForeignKey(l => l.EventId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
