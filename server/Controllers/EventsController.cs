@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Configuration;
@@ -15,11 +17,13 @@ public class EventsController : BaseApiController
 {
     private readonly StoreContext _context;
     private readonly IMapper _mapper;
+    private readonly UserManager<User> _userManager;
 
-    public EventsController(StoreContext context, IMapper mapper)
+    public EventsController(StoreContext context, IMapper mapper, UserManager<User> userManager)
     {
         _context = context;
         _mapper = mapper;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -39,7 +43,9 @@ public class EventsController : BaseApiController
     [HttpPost]
     public async Task<ActionResult<Event>> CreateEvent(CreateEventDto eventDto)
     {
+        var userId = await _userManager.FindByNameAsync(User.Identity.Name);
         var e = _mapper.Map <Event>(eventDto);
+        e.UserId = userId.Id;
         _context.Events.Add(e);
 
         var result = await _context.SaveChangesAsync() > 0;

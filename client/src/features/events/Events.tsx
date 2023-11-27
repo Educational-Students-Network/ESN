@@ -13,7 +13,7 @@ export default function Events() {
 
   useEffect(() => {
     agent.Events.allEvents().then(events => setEvents(events))
-  })
+  },[])
 
 
   return (
