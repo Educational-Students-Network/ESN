@@ -33,7 +33,6 @@ export default function Register() {
         </p>
         <form
           onSubmit={handleSubmit((data) => {
-<<<<<<< HEAD
             if (pass === confPass) {
               setHandlePass(true);
             }
@@ -45,17 +44,6 @@ export default function Register() {
                 navigate('/')
               } catch (e) {
                 setErrorRegister(true);
-=======
-            if(handlePass === false){
-              setErrorRegister(true)
-            }
-            else{
-              try{
-                agent.Account.register(data);
-              }
-              catch(e){
-                setErrorRegister(true)
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
               }
             }
           })}

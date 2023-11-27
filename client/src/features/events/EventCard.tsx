@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { useState } from "react";
-=======
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 import { Event } from "../../app/models/event";
 import "../../styles/style.css";
 interface Props {
@@ -9,7 +6,6 @@ interface Props {
 }
 
 export default function EventCard({ event }: Props) {
-<<<<<<< HEAD
   const [registered, setRegistered] = useState(false) 
   // we need to pass data here
 
@@ -31,18 +27,6 @@ export default function EventCard({ event }: Props) {
       <div className="event__description flexSpaceBetween">
         <div className="event__description__left">
           <div className="event__description__date">
-=======
-  return (
-    <div className="event">
-      <div className="header">
-        <p>Logo</p>
-        <p>{event.authorUsername}</p>
-      </div>
-      <img src={event.pictureUrl} alt="banner" />
-      <div className="description">
-        <div className="time-place-speakers">
-          <div className="date-place">
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
             <p>Дата та час: {event.time}</p>
             <p>Місце проведення: {event.place}</p>
           </div>
@@ -56,16 +40,11 @@ export default function EventCard({ event }: Props) {
             </ul>
           </div>
         </div>
-<<<<<<< HEAD
         <div className="event__description__right">
-=======
-        <div className="event-description">
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
           <p>Опис події:</p>
           <p>{event.description}</p>
         </div>
       </div>
-<<<<<<< HEAD
       <div className="event__line"></div>
       <div className="event__reactions flexSpaceBetween">
         <div className="reactions__block flexCenter">
@@ -76,12 +55,6 @@ export default function EventCard({ event }: Props) {
           <img alt="reg-img" />
           <p>{registered ? "Registered" : "Register"}</p>
         </div>
-=======
-      <div className="reactions">
-        <p>Like</p>
-        <p>Comment</p>
-        <p>Repost</p>
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
       </div>
     </div>
   );
