@@ -478,6 +478,6 @@ $RECYCLE.BIN/
 API/appsettings.json
 
 # db
-server/store.db
-server/store.db-shm
-server/store.db-wal
+store.db
+store.db-shm
+store.db-wal
