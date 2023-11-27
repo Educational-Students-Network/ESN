@@ -6,6 +6,7 @@ import HomePage from "../../features/home/HomePage";
 import PasswordRecovery from "../../features/account/PasswordRecovery";
 import EmailConfimation from "../../features/account/EmailConfirmation";
 import Profile from "../../features/account/Profile";
+import Events from "../../features/events/Events";
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
             {path:'passwordRecovery', element: <PasswordRecovery />},
             {path: 'emailConfirmation', element: <EmailConfimation />},
             {path: 'profile', element: <Profile />},
+            {path: 'events', element: <Events/>},
             {path: '*', element: <Navigate replace to='/not-found' />}
         ]
     }
