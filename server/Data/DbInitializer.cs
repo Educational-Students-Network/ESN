@@ -35,6 +35,7 @@ public static class DbInitializer
         
         if (context.Events.Any()) return;
 
+<<<<<<< HEAD
         var events = new List<Event>
         {
             new Event
@@ -58,6 +59,27 @@ public static class DbInitializer
         };
 
         context.Events.AddRange(events);
+=======
+        // var events = new List<Event>
+        // {
+        //     new Event
+        //     {
+        //         Speakers = "Speaker1, Speaker2",
+        //         Description = "This is event description blah blah blah.",
+        //         Place = "Lviv Polytechnic",
+        //         PictureUrl = "img/png/event1.png"
+        //     },
+        //     new Event
+        //     {
+        //         Speakers = "Speaker1, Speaker2",
+        //         Description = "This is event2 description blah blah blah.",
+        //         Place = "Lviv Polytechnic",
+        //         PictureUrl = "img/png/event2.png"
+        //     }
+        // };
+        //
+        // context.Events.AddRange(events);
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 
         context.SaveChanges();
     }

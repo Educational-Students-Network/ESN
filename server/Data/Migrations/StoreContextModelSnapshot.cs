@@ -45,19 +45,31 @@ namespace server.Data.Migrations
                     b.HasData(
                         new
                         {
+<<<<<<< HEAD
                             Id = "61a33503-f23d-4a0c-9aea-62d8e1df73f5",
+=======
+                            Id = "d6019389-954b-441d-bdbf-105b26753cce",
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
+<<<<<<< HEAD
                             Id = "704dbf39-6a23-4219-9336-079f25aa8adf",
+=======
+                            Id = "bbb97649-0c25-4dd9-b5ae-ae308c432fbe",
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
+<<<<<<< HEAD
                             Id = "b8dbfff7-4ad2-4236-aceb-16f38d6f8565",
+=======
+                            Id = "d9cef42c-00a7-42eb-ad5e-a0f40819c605",
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                             Name = "Mentor",
                             NormalizedName = "MENTOR"
                         });
@@ -165,16 +177,51 @@ namespace server.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+<<<<<<< HEAD
+=======
+            modelBuilder.Entity("server.Entities.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comment");
+                });
+
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
             modelBuilder.Entity("server.Entities.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+<<<<<<< HEAD
                     b.Property<string>("AuthorUsername")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+=======
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -191,15 +238,52 @@ namespace server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+<<<<<<< HEAD
                     b.Property<string>("Time")
+=======
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+<<<<<<< HEAD
                     b.ToTable("Events");
                 });
 
+=======
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("server.Entities.Like", b =>
+                {
+                    b.Property<int>("LikeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LikeId");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Like");
+                });
+
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
             modelBuilder.Entity("server.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -314,6 +398,72 @@ namespace server.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
+<<<<<<< HEAD
+=======
+
+            modelBuilder.Entity("server.Entities.Comment", b =>
+                {
+                    b.HasOne("server.Entities.Event", "Event")
+                        .WithMany("Comments")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("server.Entities.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("server.Entities.Event", b =>
+                {
+                    b.HasOne("server.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("server.Entities.Like", b =>
+                {
+                    b.HasOne("server.Entities.Event", "Event")
+                        .WithMany("Likes")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("server.Entities.User", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("server.Entities.Event", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Likes");
+                });
+
+            modelBuilder.Entity("server.Entities.User", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Likes");
+                });
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 #pragma warning restore 612, 618
         }
     }
