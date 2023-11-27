@@ -46,7 +46,11 @@ namespace server.Data.Migrations
                         new
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             Id = "61a33503-f23d-4a0c-9aea-62d8e1df73f5",
+=======
+                            Id = "d6019389-954b-441d-bdbf-105b26753cce",
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 =======
                             Id = "d6019389-954b-441d-bdbf-105b26753cce",
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
@@ -56,7 +60,11 @@ namespace server.Data.Migrations
                         new
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             Id = "704dbf39-6a23-4219-9336-079f25aa8adf",
+=======
+                            Id = "bbb97649-0c25-4dd9-b5ae-ae308c432fbe",
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 =======
                             Id = "bbb97649-0c25-4dd9-b5ae-ae308c432fbe",
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
@@ -66,7 +74,11 @@ namespace server.Data.Migrations
                         new
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             Id = "b8dbfff7-4ad2-4236-aceb-16f38d6f8565",
+=======
+                            Id = "d9cef42c-00a7-42eb-ad5e-a0f40819c605",
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 =======
                             Id = "d9cef42c-00a7-42eb-ad5e-a0f40819c605",
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
@@ -178,7 +190,10 @@ namespace server.Data.Migrations
                 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
             modelBuilder.Entity("server.Entities.Comment", b =>
                 {
                     b.Property<int>("CommentId")
@@ -208,6 +223,9 @@ namespace server.Data.Migrations
                     b.ToTable("Comment");
                 });
 
+<<<<<<< HEAD
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
+=======
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
             modelBuilder.Entity("server.Entities.Event", b =>
                 {
@@ -216,10 +234,13 @@ namespace server.Data.Migrations
                         .HasColumnType("INTEGER");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     b.Property<string>("AuthorUsername")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+=======
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 =======
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                     b.Property<string>("Description")
@@ -239,12 +260,18 @@ namespace server.Data.Migrations
                         .HasColumnType("TEXT");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     b.Property<string>("Time")
 =======
+=======
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                     b.Property<DateTime>("Time")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
+<<<<<<< HEAD
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
+=======
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -252,10 +279,13 @@ namespace server.Data.Migrations
                     b.HasKey("Id");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     b.ToTable("Events");
                 });
 
 =======
+=======
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
                     b.HasIndex("UserId");
 
                     b.ToTable("Events");
@@ -283,6 +313,9 @@ namespace server.Data.Migrations
                     b.ToTable("Like");
                 });
 
+<<<<<<< HEAD
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
+=======
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
             modelBuilder.Entity("server.Entities.User", b =>
                 {
@@ -399,7 +432,10 @@ namespace server.Data.Migrations
                         .IsRequired();
                 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 
             modelBuilder.Entity("server.Entities.Comment", b =>
                 {
@@ -463,6 +499,9 @@ namespace server.Data.Migrations
 
                     b.Navigation("Likes");
                 });
+<<<<<<< HEAD
+>>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
+=======
 >>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 #pragma warning restore 612, 618
         }
