@@ -35,7 +35,7 @@ export default function Profile() {
                     <li><span>Username</span><input placeholder="skeletron_mlg" disabled={true}></input></li>
                     <li><span>Bio</span><input disabled={true}></input></li>
                     <li><span>Gender</span><input disabled={true}></input></li>
-                    <li><span>Link</span><input disabled={true}></input></li>
+                    <li><span>Links</span><input disabled={true}></input></li>
                 </ul>
             </div>
           </div>
