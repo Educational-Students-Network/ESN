@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function EventCard({ event }: Props) {
-  const [registered, setRegistered] = useState(false);
+  const [registered, setRegistered] = useState(false) 
   // we need to pass data here
 
   return (
@@ -30,6 +30,7 @@ export default function EventCard({ event }: Props) {
             <p>Дата та час: {event.time}</p>
             <p>Місце проведення: {event.place}</p>
           </div>
+
           <div className="speakers">
             <p>Головні спікери</p>
             <ul>
