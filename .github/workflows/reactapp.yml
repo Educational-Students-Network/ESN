@@ -34,7 +34,7 @@ jobs:
 #      run: npm --prefix test 
     
     - name: Build
-      run: npm --prefix client update caniuse-lite browserslist && npm --prefix client run build
+      run: npm --prefix client update caniuse-lite browserslist && CI=false npm --prefix client run build
 
 #    - name: Update caniuse-lite database
 #      run: npm install --prefix client -g update-browserslist-db
