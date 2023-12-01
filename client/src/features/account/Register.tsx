@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "../../styles/style.css";
 import lock_icon from "../../img/svg/lock_icon.svg";
 import user_icon from "../../img/svg/user_icon.svg";
 import agent from "../../app/api/agent";
 import mail_icon from "../../img/svg/mail_icon.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [errorRegister, setErrorRegister] = useState(false);
   const [confPass, setConfPass] = useState("");
+  const [pass, setPass] = useState("");
   const [handlePass, setHandlePass] = useState(false);
+  const navigate = useNavigate();
   // when writing css code make loading component and assing it to button
 
   const {
@@ -30,15 +33,17 @@ export default function Register() {
         </p>
         <form
           onSubmit={handleSubmit((data) => {
-            if(handlePass === false){
-              setErrorRegister(true)
+            if (pass === confPass) {
+              setHandlePass(true);
             }
-            else{
-              try{
+            if (handlePass === false) {
+              setErrorRegister(true);
+            } else {
+              try {
                 agent.Account.register(data);
-              }
-              catch(e){
-                setErrorRegister(true)
+                navigate('/')
+              } catch (e) {
+                setErrorRegister(true);
               }
             }
           })}
@@ -103,7 +108,9 @@ export default function Register() {
                     required
                     value={confPass}
                     placeholder="Confirm password"
-                    onChange={(e) => setConfPass(e.target.value)}
+                    onChange={(e) => {
+                      setConfPass(e.target.value);
+                    }}
                   />
                 </div>
               </div>
