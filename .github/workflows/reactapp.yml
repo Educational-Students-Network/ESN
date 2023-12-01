@@ -1,0 +1,39 @@
+name: ESN_Client_App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+  
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Install dependencies
+      run: npm --prefix client install
+
+#    - name: Run the tests
+#      run: npm --prefix test 
+    
+    - name: Build
+      run: npm --prefix client update caniuse-lite browserslist && CI=false npm --prefix client run build
+
+#    - name: Update caniuse-lite database
+#      run: npm install --prefix client -g update-browserslist-db
