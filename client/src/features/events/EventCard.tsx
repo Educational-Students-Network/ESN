@@ -6,13 +6,12 @@ interface Props {
 }
 
 export default function EventCard({ event }: Props) {
-
-  const [registered, setRegistered] = useState(false) 
+  const [registered, setRegistered] = useState(false);
   // we need to pass data here
 
   return (
     <div className="event">
-       <div className="header flexSpaceBetween">
+      <div className="header flexSpaceBetween">
         <div className="header__left flexCenter">
           <img alt="logo" />
           <div className="header__left__group">
