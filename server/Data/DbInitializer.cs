@@ -35,8 +35,7 @@ public static class DbInitializer
         
         if (context.Events.Any()) return;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         var events = new List<Event>
         {
             new Event
@@ -60,9 +59,7 @@ public static class DbInitializer
         };
 
         context.Events.AddRange(events);
-=======
-=======
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
+
         // var events = new List<Event>
         // {
         //     new Event
@@ -82,10 +79,6 @@ public static class DbInitializer
         // };
         //
         // context.Events.AddRange(events);
-<<<<<<< HEAD
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
-=======
->>>>>>> 95e8f6d94275e0d193004a8a0340148a48ca3370
 
         context.SaveChanges();
     }
