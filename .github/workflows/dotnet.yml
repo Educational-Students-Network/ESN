@@ -2,7 +2,7 @@ name: ESN_build
 
 on:
   push:
-    branches: [ "main", "SqueshSvytDevOps"]
+    branches: [ "main", "DevOpsBranch"]
   pull_request:
     branches: [ "main" ]
 
