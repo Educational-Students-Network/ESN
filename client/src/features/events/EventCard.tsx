@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Event } from "../../app/models/event";
 import "../../styles/style.css";
 interface Props {
@@ -6,27 +5,16 @@ interface Props {
 }
 
 export default function EventCard({ event }: Props) {
-  const [registered, setRegistered] = useState(false) 
-  // we need to pass data here
-
   return (
     <div className="event">
-      <div className="header flexSpaceBetween">
-        <div className="header__left flexCenter">
-          <img alt="logo" />
-          <div className="header__left__group">
-            <p>{event.authorUsername}</p>
-            <p>status</p>
-          </div>
-        </div>
-        <div className="header__right">
-          <img alt="menu" />
-        </div>
+      <div className="header">
+        <p>Logo</p>
+        <p>{event.authorUsername}</p>
       </div>
-      <img className="event__banner" src={event.pictureUrl} alt="banner" />
-      <div className="event__description flexSpaceBetween">
-        <div className="event__description__left">
-          <div className="event__description__date">
+      <img src={event.pictureUrl} alt="banner" />
+      <div className="description">
+        <div className="time-place-speakers">
+          <div className="date-place">
             <p>Дата та час: {event.time}</p>
             <p>Місце проведення: {event.place}</p>
           </div>
@@ -40,21 +28,15 @@ export default function EventCard({ event }: Props) {
             </ul>
           </div>
         </div>
-        <div className="event__description__right">
+        <div className="event-description">
           <p>Опис події:</p>
           <p>{event.description}</p>
         </div>
       </div>
-      <div className="event__line"></div>
-      <div className="event__reactions flexSpaceBetween">
-        <div className="reactions__block flexCenter">
-          <img alt="like-img" />
-          <p>Like</p>
-        </div>
-        <div className="reactions__block flexCenter">
-          <img alt="reg-img" />
-          <p>{registered ? "Registered" : "Register"}</p>
-        </div>
+      <div className="reactions">
+        <p>Like</p>
+        <p>Comment</p>
+        <p>Repost</p>
       </div>
     </div>
   );
