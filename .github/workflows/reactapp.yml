@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - DevOpsBranch
   pull_request:
     branches:
       - main
