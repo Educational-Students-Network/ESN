@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "../../styles/style.css";
 import lock_icon from "../../img/svg/lock_icon.svg";
@@ -41,7 +41,7 @@ export default function Register() {
             } else {
               try {
                 agent.Account.register(data);
-                navigate("/");
+                navigate('/')
               } catch (e) {
                 setErrorRegister(true);
               }
@@ -108,7 +108,9 @@ export default function Register() {
                     required
                     value={confPass}
                     placeholder="Confirm password"
-                    onChange={(e) => setConfPass(e.target.value)}
+                    onChange={(e) => {
+                      setConfPass(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -117,8 +119,9 @@ export default function Register() {
               <div className="error">Invalid email or password</div>
             ) : null}
           </div>
+
           <div>
-            <button disabled={!isValid} type="submit">
+            <button disabled={!isValid} type="submit" >
               Create Account
             </button>
           </div>
