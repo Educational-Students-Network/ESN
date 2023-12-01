@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - SqueshSvytDevOps
+      - DevOpsBranch
   pull_request:
     branches:
       - main
