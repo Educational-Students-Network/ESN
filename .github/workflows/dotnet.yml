@@ -2,9 +2,11 @@ name: ESN_build
 
 on:
   push:
-    branches: [ "main", "DevOpsBranch"]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
