@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../../app/store/configureStore";
 import "../../styles/style.css";
 
 export default function NavBar() {
+  const {user} = useAppSelector(state => state.account);
+
+ 
+ 
   return (
     <div className="NavBar">
       <div className="logo">
@@ -21,8 +26,10 @@ export default function NavBar() {
           <h1>About Us</h1>
         </NavLink>
       </div>
-
-      <div className="login-reg-lang el">
+      {user ? 
+        <div> їбало</div> 
+       : 
+        <div className="login-reg-lang el">
         <button>Eng</button>
         <div>
           <NavLink to={"/login"}>
@@ -33,6 +40,7 @@ export default function NavBar() {
           </NavLink>
         </div>
       </div>
+      }
     </div>
   );
 }

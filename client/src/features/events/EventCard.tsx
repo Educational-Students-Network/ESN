@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { Event } from "../../app/models/event";
 import "../../styles/style.css";
+import like from "../../img/png/like.png";
+import register_img from "../../img/png/register.png";
+import registered_img from "../../img/png/registered.png";
+
 interface Props {
   event: Event;
 }
 
 export default function EventCard({ event }: Props) {
-  const [registered, setRegistered] = useState(false) 
+  const [registered, setRegistered] = useState(false);
   // we need to pass data here
 
   return (
     <div className="event">
-       <div className="header flexSpaceBetween">
+      <div className="header flexSpaceBetween">
         <div className="header__left flexCenter">
           <img alt="logo" />
           <div className="header__left__group">
@@ -48,14 +52,14 @@ export default function EventCard({ event }: Props) {
       <div className="event__line"></div>
       <div className="event__reactions flexSpaceBetween">
         <div className="reactions__block flexCenter">
-          <img alt="like-img" />
+          <img alt="like-img" src={like} />
           <p>Like</p>
         </div>
         <div className="reactions__block flexCenter">
-          <img alt="reg-img" />
+          <img alt="reg-img" src={registered ? registered_img : register_img} />
           <p>{registered ? "Registered" : "Register"}</p>
         </div>
-        </div>
+      </div>
     </div>
   );
 }
