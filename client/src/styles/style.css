@@ -784,3 +784,165 @@ input[type="date"]:valid:before {
 .prof__img img{
   width: 100%;
 }
+
+.eventpage{
+  background-color: #E2F0FF;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 40px;
+}
+
+.eventpage__left{
+  width: 1042px;
+}
+
+.eventpage__left img{
+  display: block;
+  height: 371px;
+}
+
+.eventpage__right{
+  width:363px;
+}
+
+.eventpage__left__inner{
+  border-radius: 30px;
+  background-color: #fff;
+  height: 807px;
+  outline: 1px solid #4D7275;
+}
+
+.eventpage__left__title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 10px;
+  font-size: 30px;
+  height: 65px;
+  margin-bottom: 30px;
+}
+
+.eventpage__left__title p{
+  text-align: center;
+  width: 700px;
+  color: #000;
+}
+
+.eventpage__top__line{
+  width: 964.5px;
+  background-color: #000;
+  height: 1px;
+  margin: 0 36.5px 20px;
+}
+
+.eventpage__middle{
+  display: flex;
+  margin-left: 57px;
+  font-size: 24px;
+  gap: 70px;
+  margin-bottom: 20px;
+}
+
+.eventpage__middle  h1{
+  color: #000;
+  font-size: 24px;
+  margin-bottom: 45px;
+}
+
+.eventpage__middle p{
+  color: #000;
+  margin-left: 24px;
+  font-size: 24px;
+  width: 386px;
+}
+
+.eventpage__left__inner img{
+  width: 431px;
+  height: 286px;
+}
+
+.eventpage__bottom{
+  height: 322px;
+  background-color: #E2F0FF;
+  outline: 1px solid #4D7275;
+}
+
+.eventpage__bottom h1{
+  margin-left: 58px;
+  padding-top: 19px;
+  color: #000;
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+.eventpage__bottom p{
+  font-size: 24px;
+  color: #000;
+  margin-left: 82px;
+  width: 806px;
+}
+
+
+.eventpage .event__reactions img{
+  width: 34px;
+  height: 32px;
+}
+
+.eventpage .event__reactions p {
+  font-size: 19px;
+  color: #000;
+}
+
+.eventpage__right{
+  width: 311px;
+  height: 341px;
+  padding: 43px 26px 33px;
+  background-color: #fff;
+  border-radius: 30px;
+  outline: 1px solid #4D7275;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eventpage__right p{
+  font-size: 19px;
+  color: #000;
+}
+
+.eventpage__right h3{
+  padding-top: 19px;
+  font-size: 19px;
+  color: #000;
+  font-weight: 300;
+}
+
+.eventpage__right li{
+  font-size: 19px;
+  color: #000;
+}
+
+.eventpage__right button{
+  width: 279px;
+  height: 48px;
+  border-radius: 10px;
+  outline: none;
+  border: 0;
+  background-color: #C2E0FF;
+  color: #fff;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+}
+
+.eventpage__right div{
+  width: 311px;
+}
+

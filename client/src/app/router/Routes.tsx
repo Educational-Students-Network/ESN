@@ -8,6 +8,7 @@ import EmailConfimation from "../../features/account/EmailConfirmation";
 import Profile from "../../features/account/Profile";
 import Events from "../../features/events/Events";
 import CreateEvent from "../../features/events/CreateEvent";
+import EventPage from "../../features/events/EventPage";
 
 export const router = createBrowserRouter([
     {
@@ -22,8 +23,9 @@ export const router = createBrowserRouter([
             {path: 'profile', element: <Profile />},
             {path: 'events', element: <Events/>},
             {path: 'createEvent', element: <CreateEvent/>},
+            {path: 'Event', element: <EventPage/>},
             {path: '*', element: <Navigate replace to='/not-found' />}
-        
+            
         ]
     }
 ])
