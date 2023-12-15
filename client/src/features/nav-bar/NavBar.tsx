@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../app/store/configureStore";
 import "../../styles/style.css";
+import userimg from "../../img/svg/profile-circle.svg"
+
 
 export default function NavBar() {
   const {user} = useAppSelector(state => state.account);
-
+  const navigate = useNavigate();
  
  
   return (
@@ -30,8 +32,10 @@ export default function NavBar() {
         </NavLink>
         
       </div>
-      {user ? 
-        <div> їбало</div> 
+      {user ?   
+        <div className="prof__img" >
+        <img alt="profile" src={userimg} onClick={()=>{navigate('/profile')}}/> 
+        </div>
        : 
         <div className="login-reg-lang el">
         <div>

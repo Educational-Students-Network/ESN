@@ -776,3 +776,11 @@ input[type="date"]:valid:before {
   padding: 20px;
 }
 
+.prof__img{
+  width: 116px;
+  height: 116px;
+}
+
+.prof__img img{
+  width: 100%;
+}
