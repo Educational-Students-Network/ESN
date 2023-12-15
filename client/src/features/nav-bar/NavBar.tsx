@@ -22,15 +22,18 @@ export default function NavBar() {
         <NavLink to={"/events"}>
           <h1>Events</h1>
         </NavLink>
+        <NavLink to={"/createEvent"}>
+          <h1>Create Event</h1>
+        </NavLink>
         <NavLink to={"/aboutUs"}>
           <h1>About Us</h1>
         </NavLink>
+        
       </div>
       {user ? 
         <div> їбало</div> 
        : 
         <div className="login-reg-lang el">
-        <button>Eng</button>
         <div>
           <NavLink to={"/login"}>
             <button>Login</button>
