@@ -41,7 +41,7 @@
   "scripts": {
     "install gh-pages": "npm install gh-pages --save-dev",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d ./API/wwwroot",
+    "deploy": "gh-pages -d ../API/wwwroot",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
