@@ -43,4 +43,3 @@ jobs:
           git branch -D gh-pages || true
           git checkout -b gh-pages
           git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
-
