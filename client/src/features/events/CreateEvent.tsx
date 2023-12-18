@@ -152,8 +152,10 @@ export default function CreateEvent() {
                       }
                     ></input>
                     <span className="UAH">UAH</span>
+                    <div className="suckMyBalls">
                     <input type="checkbox"></input>
                     <span>Free</span>
+                    </div>
                   </div>
 
                   {isChecked ? (
