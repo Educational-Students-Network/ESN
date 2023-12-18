@@ -63,7 +63,7 @@ builder.Services.AddIdentityCore<User>(opt =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>
     {
-        var tokenKey = builder.Configuration["JwtSettings:TokenKey"];
+        var tokenKey = builder.Configuration["Jwt:Key"];
      
         if (tokenKey == null)
         {
