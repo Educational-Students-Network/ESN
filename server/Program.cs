@@ -57,9 +57,19 @@ builder.Services.AddIdentityCore<User>(opt =>
     })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<StoreContext>();
+
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>
     {
+        var tokenKey = builder.Configuration["JwtSettings:TokenKey"];
+     
+        if (tokenKey == null)
+        {
+             throw new ApplicationException("JWT Token Key is missing or empty in configuration.");
+        }
+         
         opt.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = false,
@@ -67,7 +77,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
-                .GetBytes(builder.Configuration["JwtSettings:TokenKey"]))
+                 .GetBytes(tokenKey))
         };
     });
 builder.Services.AddAuthorization();
