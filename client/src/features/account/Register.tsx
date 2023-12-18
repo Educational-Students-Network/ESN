@@ -33,18 +33,16 @@ export default function Register() {
         </p>
         <form
           onSubmit={handleSubmit((data) => {
-            if (pass === confPass) {
-              setHandlePass(true);
-            }
-            if (handlePass === false) {
-              setErrorRegister(true);
-            } else {
-              try {
+            try{
+              if(confPass === pass){
                 agent.Account.register(data);
-                navigate('/')
-              } catch (e) {
+                navigate("/");
+              }
+              else{
                 setErrorRegister(true);
               }
+            } catch(e){
+              setErrorRegister(true);
             }
           })}
         >
@@ -89,9 +87,8 @@ export default function Register() {
                       required: true,
                       onChange: () => {
                         const value = getValues("password");
-                        value === confPass
-                          ? setHandlePass(true)
-                          : setHandlePass(false);
+                        setPass(value);
+                        
                       },
                     })}
                     placeholder="Type your password"
@@ -110,6 +107,9 @@ export default function Register() {
                     placeholder="Confirm password"
                     onChange={(e) => {
                       setConfPass(e.target.value);
+                      if (pass === confPass) {
+                        setHandlePass(true);
+                      }
                     }}
                   />
                 </div>
@@ -129,4 +129,3 @@ export default function Register() {
     </div>
   );
 }
-
