@@ -45,19 +45,19 @@ namespace server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d6019389-954b-441d-bdbf-105b26753cce",
+                            Id = "4d8bc0a0-a66a-4d6a-b296-812c7323f0bf",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "bbb97649-0c25-4dd9-b5ae-ae308c432fbe",
+                            Id = "fc980893-adfb-41b6-8ccc-47dff282788d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d9cef42c-00a7-42eb-ad5e-a0f40819c605",
+                            Id = "1c138f53-5e65-434d-a905-469599d0d1bd",
                             Name = "Mentor",
                             NormalizedName = "MENTOR"
                         });
@@ -204,6 +204,10 @@ namespace server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PictureUrl")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -212,11 +216,18 @@ namespace server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Speakers")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")

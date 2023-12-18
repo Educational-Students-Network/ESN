@@ -2,8 +2,51 @@ import NavBar from "../nav-bar/NavBar";
 import plus from "../../img/svg/plus.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import agent from "../../app/api/agent";
 
 export default function CreateEvent() {
+  // const [formData, setFormData] = useState({
+  //   title: '',
+  //   titlePicture: '', // Assuming you want to store the picture URL
+  //   description: '',
+  //   date: '',
+  //   time: '',
+  //   price: 0,
+  //   isFree: false,
+  //   address: '',
+  //   isOnline: false,
+  //   link: '',
+  //   additionalInfo: '',
+  // });
+  const [formData, setFormData] = useState({
+    Title: '',
+    Description: '',
+    Time: '',
+    Price:'',
+    Place: '',
+    Link: '',
+    Speakers: 'aboba',
+    PictureUrl:''
+  });
+  const handleInputChange = (field: string, value: any) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
+  const handleSubmit = () => {
+    // Do something with the collected data (e.g., send it to the server)
+    try {
+      agent.Events.createEvent(formData);
+      console.log('Form Data:', formData);
+      navigate('/')
+    } catch (e) {
+      console.log('error')
+    }
+  
+  };
+
+
   const [page, setPage] = useState(0);
   const navigate = useNavigate();
   
@@ -33,7 +76,10 @@ export default function CreateEvent() {
                 <h2>Title</h2>
                 <div className="createEvent__line"></div>
                 <form>
-                  <textarea placeholder="Create a title for your event(no more than 50 words )"></textarea>
+                  <textarea placeholder="Create a title for your event(no more than 50 words )"
+                  value={formData.Title}
+                  onChange={(e) => handleInputChange('Title', e.target.value)}
+                  ></textarea>
                 </form>
                 <div className="createEvent__line"></div>
                 <div className="createEvent__bottom">
@@ -45,7 +91,10 @@ export default function CreateEvent() {
                 <h2>Description</h2>
                 <div className="createEvent__line"></div>
                 <form>
-                  <textarea placeholder="Create a description for your event(no more than 150 words )"></textarea>
+                  <textarea placeholder="Create a description for your event(no more than 150 words )"
+                  value={formData.Description}
+                  onChange={(e) => handleInputChange('Description', e.target.value)}
+                  ></textarea>
                 </form>
                 <div className="createEvent__line"></div>
                 <h2>Tags</h2>
@@ -76,16 +125,24 @@ export default function CreateEvent() {
                 <div className="createEvent__field2__innerbody">
                   <div className="createEvent__field2__date">
                     <p>Date & Time</p>
-                    <input type="date"  id="datePickerId" min={getCurrentDate()}/>
+                    <input type="date"  id="datePickerId" min={getCurrentDate()}
+                    value={formData.Time}
+                    onChange={(e) => handleInputChange('Time', e.target.value)}
+                    />
                   </div>
                   <div className="createEvent__field2__price">
                     <p>Price</p>
-                    <input type="number" ></input><span className="UAH">UAH</span>
+                    <input type="number" 
+                    value={formData.Price}
+                    onChange={(e) => handleInputChange('Price', parseFloat(e.target.value))}
+                    ></input><span className="UAH">UAH</span>
                     <input type="checkbox"></input><span>Free</span>
                   </div>
                   <div className="createEvent__field2__address">
                     <p>Address</p>
-                    <input type="text"></input>
+                    <input type="text"
+                    value={formData.Place}
+                    onChange={(e) => handleInputChange('Place', e.target.value)}></input>
                     <input type="checkbox"></input><span>Online</span>
                   </div>
                   <div className="createEvent__field2__link">
@@ -96,7 +153,9 @@ export default function CreateEvent() {
                 </div>
                 <div className="createEvent__field2__idk">
                     <p></p>
-                    <textarea ></textarea>
+                    <textarea 
+                    value={formData.Link}
+                    onChange={(e) => handleInputChange('Link', e.target.value)}></textarea>
                   </div>
                 <div className="createEvent__line2"></div>
               </div>
@@ -104,9 +163,7 @@ export default function CreateEvent() {
 
             <div className="createEvent__pagination">
               <div
-                onClick={() => {
-                  setPage(1);
-                }}
+                onClick={handleSubmit}
               >
                 <div className="createEvent__submit">Submit</div>
               </div>

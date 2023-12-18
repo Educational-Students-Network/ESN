@@ -44,7 +44,7 @@ public class EventsController : BaseApiController
     public async Task<ActionResult<Event>> CreateEvent(CreateEventDto eventDto)
     {
         var userId = await _userManager.FindByNameAsync(User.Identity.Name);
-        var e = _mapper.Map <Event>(eventDto);
+        var e = _mapper.Map<Event>(eventDto);
         e.UserId = userId.Id;
         _context.Events.Add(e);
 
