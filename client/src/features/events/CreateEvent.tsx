@@ -27,7 +27,7 @@ export default function CreateEvent() {
     Price: "",
     Place: "",
     Link: "",
-    Speakers: "aboba",
+    Speakers: "",
     PictureUrl: "",
   });
   const [file, setFile] = useState();

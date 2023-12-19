@@ -16,7 +16,7 @@ export default function EventList({ events }: Props) {
       </div>
       <div className="eventlist__line" />
       <div className="eventlist__noevents flexCenter">
-        <h1>No events yet!</h1><img alt="sad face" src={sad} />
+        <h1>Thats all for now!</h1>
       </div>
     </div>
   );
