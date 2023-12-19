@@ -1,8 +1,10 @@
 import NavBar from "../nav-bar/NavBar";
 import plus from "../../img/svg/plus.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import agent from "../../app/api/agent";
+import axios from "axios";
+import { set } from "react-hook-form";
 
 export default function CreateEvent() {
   // const [formData, setFormData] = useState({
@@ -28,22 +30,69 @@ export default function CreateEvent() {
     Speakers: "aboba",
     PictureUrl: "",
   });
+  const [file, setFile] = useState();
   const handleInputChange = (field: string, value: any) => {
+
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
   };
-  const handleSubmit = () => {
+
+  const handleFileChange = (e: any) => {
+    const selectedFile = e.target.files[0];
+
+    setFile(selectedFile);
+    if (selectedFile){
+      const reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+      reader.onloadend = async () => {
+        const base64data = reader.result?.toString() || '';
+        handleInputChange('PictureUrl', base64data)
+      }
+    }
+  };
+
+
+  const handleSubmit = async () => {
     // Do something with the collected data (e.g., send it to the server)
     try {
+      // if (file) {
+      //   const formDataImg = new FormData();
+      //   formDataImg.append("file", file);
+
+      //   await axios.post('ImageUpload/upload', formDataImg, {
+      //     headers:{
+      //       'Content-Type': 'multipart/form-data',
+      //     }
+      //   }).then((response) => {
+      //     // handle the response
+      //         //this doesn't save url somehow
+      //         console.log(response.data.filePath);
+      //         handleInputChange('PictureUrl', response.data.filePath)
+              
+
+      //       })
+      //       .catch((error) => {
+      //         // handle errors
+      //         console.log(error);
+      //       });
+        
+      // } else {
+      //   // Handle the case where file is undefined
+      //   console.error('No file selected');
+      // }
+
+      
       agent.Events.createEvent(formData);
-      console.log("Form Data:", formData);
-      navigate("/");
+      console.log(formData);
+      navigate('/');
     } catch (e) {
       console.log("error");
     }
-  };
+  
+  }
+
 
   const [page, setPage] = useState(0);
   const navigate = useNavigate();
@@ -88,7 +137,7 @@ export default function CreateEvent() {
                 <div className="createEvent__line"></div>
                 <div className="createEvent__bottom">
                   <img src={plus} alt="plus" />
-                  <h2>Add Picture</h2>
+                  <input type="file" accept="image/*" onChange={handleFileChange} /><h2>Add Picture</h2>
                 </div>
               </div>
               <div className="createEvent__field">

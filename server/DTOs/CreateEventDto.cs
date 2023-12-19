@@ -10,6 +10,7 @@ public class CreateEventDto
     public string Description { get; set; }
     public DateTime Time { get; set; }
     public string Place { get; set; }
+    public decimal Price { get; set; }
     public string Link { get; set; }
     public string PictureUrl { get; set; }
 }

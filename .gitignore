@@ -481,3 +481,6 @@ API/appsettings.json
 server/store.db
 server/store.db-shm
 server/store.db-wal
+
+#photos
+server/uploads

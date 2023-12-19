@@ -45,8 +45,7 @@ export default function HomePage() {
               <div>
                 <h2>Different activities</h2>
                 <p>
-                  текст про актівітіс, який має написати БА, тра ля ля тра ля ля
-                  тра ля ля тра ля ля тра ля ля тра ля ля
+                Discover a variety of activities for active recreation and education. From cultural events and technical seminars to sporting events and educational initiatives, there is something for everyone!
                 </p>
               </div>
             </div>
@@ -55,8 +54,7 @@ export default function HomePage() {
               <div>
                 <h2>Interactive community</h2>
                 <p>
-                  текст про комуніті, який має написати БА, тра ля ля тра ля ля
-                  тра ля ля тра ля ля тра ля ля тра ля ля
+                Join our interactive community where you can communicate, collaborate and grow together with different people from all over the world. Our community offers opportunities to share ideas, explore new projects, and find new friends and partners for joint endeavors.
                 </p>
               </div>
               <img src={home_info_2} alt="home_info_2" />
@@ -67,8 +65,7 @@ export default function HomePage() {
               <div>
                 <h2>Job offers</h2>
                 <p>
-                  текст про роботу, який має написати БА, тра ля ля тра ля ля
-                  тра ля ля тра ля ля тра ля ля тра ля ля
+                Find your ideal job on our website. We offer a wide range of jobs in various fields, from leading technology companies to small startups. Check out our offers and find your dream job today!
                 </p>
               </div>
             </div>
