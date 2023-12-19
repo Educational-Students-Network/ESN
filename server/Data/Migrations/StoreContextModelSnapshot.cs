@@ -45,19 +45,19 @@ namespace server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4d8bc0a0-a66a-4d6a-b296-812c7323f0bf",
+                            Id = "2872b9ec-e05a-42a4-981f-c45a75e67380",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "fc980893-adfb-41b6-8ccc-47dff282788d",
+                            Id = "99e704f1-eb98-452a-b367-f432a79c0681",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "1c138f53-5e65-434d-a905-469599d0d1bd",
+                            Id = "3f2bda94-ccb1-4a16-bea6-67e5dfc50f66",
                             Name = "Mentor",
                             NormalizedName = "MENTOR"
                         });

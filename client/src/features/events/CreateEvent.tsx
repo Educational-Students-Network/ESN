@@ -1,6 +1,6 @@
 import NavBar from "../nav-bar/NavBar";
 import plus from "../../img/svg/plus.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import agent from "../../app/api/agent";
 import axios from "axios";
@@ -32,6 +32,7 @@ export default function CreateEvent() {
   });
   const [file, setFile] = useState();
   const handleInputChange = (field: string, value: any) => {
+
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
@@ -42,43 +43,55 @@ export default function CreateEvent() {
     const selectedFile = e.target.files[0];
 
     setFile(selectedFile);
-    
+    if (selectedFile){
+      const reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+      reader.onloadend = async () => {
+        const base64data = reader.result?.toString() || '';
+        handleInputChange('PictureUrl', base64data)
+      }
+    }
   };
+
 
   const handleSubmit = async () => {
     // Do something with the collected data (e.g., send it to the server)
     try {
-      if (file) {
-        const formDataImg = new FormData();
-        formDataImg.append("file", file);
+      // if (file) {
+      //   const formDataImg = new FormData();
+      //   formDataImg.append("file", file);
 
-        await axios.post('ImageUpload/upload', formDataImg, {
-          headers:{
-            'Content-Type': 'multipart/form-data',
-          }
-        }).then((response) => {
-          // handle the response
-              //this doesn't save url somehow
-              handleInputChange('PictureUrl', response.data.filePath)
-              console.log(response);
+      //   await axios.post('ImageUpload/upload', formDataImg, {
+      //     headers:{
+      //       'Content-Type': 'multipart/form-data',
+      //     }
+      //   }).then((response) => {
+      //     // handle the response
+      //         //this doesn't save url somehow
+      //         console.log(response.data.filePath);
+      //         handleInputChange('PictureUrl', response.data.filePath)
+              
 
-            })
-            .catch((error) => {
-              // handle errors
-              console.log(error);
-            });
+      //       })
+      //       .catch((error) => {
+      //         // handle errors
+      //         console.log(error);
+      //       });
         
-      } else {
-        // Handle the case where file is undefined
-        console.error('No file selected');
-      }
+      // } else {
+      //   // Handle the case where file is undefined
+      //   console.error('No file selected');
+      // }
+
+      
       agent.Events.createEvent(formData);
-      navigate('/')
+      console.log(formData);
+      navigate('/');
     } catch (e) {
       console.log('error')
     }
   
-  };
+  }
 
 
 
