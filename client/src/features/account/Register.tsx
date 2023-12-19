@@ -61,6 +61,7 @@ export default function Register() {
                     id="email"
                     {...register("email", { required: true })}
                     placeholder="Type your email"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -73,6 +74,7 @@ export default function Register() {
                     id="userName"
                     {...register("userName", { required: true })}
                     placeholder="Type your username"
+                    autoComplete="off"
                   />
                 </div>
               </div>

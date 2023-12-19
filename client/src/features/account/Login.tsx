@@ -50,11 +50,13 @@ function Login() {
                     alt="user_icon"
                   ></img>
                   <input
+                    
                     className={errorLogin ? "error-input" : ""}
                     type="email"
                     id="email"
                     {...register("email", { required: true })}
                     placeholder="Type your email"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -71,6 +73,7 @@ function Login() {
                     id="password"
                     {...register("password", { required: true })}
                     placeholder="Type your password"
+                    autoComplete="off"
                   />
                 </div>
               </div>

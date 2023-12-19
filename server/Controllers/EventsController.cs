@@ -39,6 +39,14 @@ public class EventsController : BaseApiController
     }
 
 
+    [HttpDelete]
+    public IActionResult DeleteAllEvents()
+    {
+        var sql = "DELETE FROM Events";
+        _context.Database.ExecuteSqlRaw(sql);
+        return Ok();
+    }
+    
     [Authorize]
     [HttpPost]
     public async Task<ActionResult<Event>> CreateEvent(CreateEventDto eventDto)
