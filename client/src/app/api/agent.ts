@@ -84,7 +84,7 @@ const Account = {
 
 const Events = {
     allEvents: () => requests.get('events'),
-    createEvent: (values: any)=> requests.post('events', values)
+    createEvent: (values: any)=> requests.post('events', values),
 }
 
 const agent = {
