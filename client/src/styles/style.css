@@ -688,6 +688,7 @@
 }
 
 .createEvent__line2 {
+  margin-top: 650px;
   width: 1432px;
   height: 12px;
   border-radius: 10px;
@@ -746,14 +747,14 @@ input[type="date"]:valid:before {
 }
 
 .createEvent__field2__price input {
-  width: 100px;
+  width: 200px;
   padding-left: 0;
-  padding-right: 65px;
   text-align: center;
 }
 
 .createEvent__field2__address input {
   text-align: center;
+
 }
 
 .createEvent__field2__idk textarea {
@@ -944,5 +945,10 @@ input[type="date"]:valid:before {
 
 .eventpage__right div{
   width: 311px;
+}
+
+.suckMyBalls{
+  position: relative;
+  right: 60px;
 }
 
